@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f9f9f9">
+  <title>Brother James' Homepage</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-blur"></div>
+  
+  <main class="container">
+    <header class="hero">
+      <h1>Brother James' Homepage</h1>
+      <p>Keep in touch with your people</p>
+    </header>
+
+    <div class="welcome-user">
+      <p>Welcome back <span id="username-display"></span></p>
+    </div>
+
+    <section class="actions-panel">
+      <a href="#people" class="btn btn-people">
+        <div class="btn-icon-wrapper">
+          <img src="icons/people.png" class="btn-icon" alt="People">
+        </div>
+        <div class="btn-text">
+          <span class="btn-title">People</span>
+          <span class="btn-desc">Where they at?</span>
+        </div>
+      </a>
+      
+      <a href="#send-emails" class="btn btn-email">
+        <div class="btn-icon-wrapper">
+          <img src="icons/email.png" class="btn-icon" alt="Send Emails">
+        </div>
+        <div class="btn-text">
+          <span class="btn-title">Send Emails</span>
+          <span class="btn-desc">Get in Touch</span>
+        </div>
+      </a>
+      
+      <a href="#build-pages" class="btn btn-primary">
+        <div class="btn-icon-wrapper">
+          <img src="icons/build.png" class="btn-icon" alt="Build Pages">
+        </div>
+        <div class="btn-text">
+          <span class="btn-title">Build Pages</span>
+          <span class="btn-desc">Create landing pages</span>
+        </div>
+      </a>
+    </section>
+
+    <footer class="footer">
+        <div class="logo">
+        <div class="logo-icon"></div>
+      </div>
+      <div class="social-icons">
+        <a href="#" class="icon-button" aria-label="Help">
+          <img src="icons/help.png" alt="Help">
+        </a>
+        <a href="#" class="icon-button" aria-label="Settings">
+          <img src="icons/settings.png" alt="Settings">
+        </a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Check if user is logged in
+    if (!localStorage.getItem('isLoggedIn')) {
+      // Not logged in, redirect to login page
+      window.location.href = 'index.html';
+    }
+    
+    // Add logout functionality
+    function logout() {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('username');
+      localStorage.removeItem('userEmail');
+      window.location.href = 'index.html';
+    }
+    
+    // Add logout button to settings
+    document.querySelector('.social-icons a[aria-label="Settings"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      if (confirm('Do you want to log out?')) {
+        logout();
+      }
+    });
+
+    // Show username in welcome message
+    document.getElementById('username-display').textContent = localStorage.getItem('username') || 'User';
+  </script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+:root {
+  --bg: #FDF4E5;
+  --surface: #fff;
+  --primary: #545E68;
+  --primary-light: #636c76;
+  --on-primary: #ffffff;
+  --outline: rgba(84, 94, 104, 0.2);
+  --text: #545E68;
+  --muted: #777f88;
+  --radius: 12px;
+  --gap: 18px;
+  --transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  
+  /* New theme colors */
+  --blue: #545E68;
+  --yellow: #9F7A4E;
+  --cream: #FDF4E5;
+  --red: #853D3E;
+  --green: #606C59;
+  --brown: #a26e47;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.background-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at top right, rgba(159, 122, 78, 0.15) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+.container {
+  max-width: 420px;
+  width: 100%;
+  margin: auto;
+  padding: 30px;
+  border-radius: calc(var(--radius) * 2);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 8px 32px rgba(84, 94, 104, 0.08), 
+    0 1px 4px rgba(84, 94, 104, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Update the logo container with background to make white signature visible */
+.logo {
+  margin: 0 auto 24px;
+  width: 240px;
+  height: 60px;
+  border-radius: 0px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+/* Enhance the signature appearance */
+.logo-icon {
+  width: 240px;
+  height: 100px;
+  background-image: url('icons/signature.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: invert(1);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(to right, var(--blue), var(--brown));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+p {
+  margin: 12px 0 0;
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.actions-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.btn {
+  width: 100%;
+  padding: 0;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  overflow: hidden;
+  min-height: 60px;
+  position: relative;
+}
+
+.btn-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.btn-primary .btn-icon-wrapper {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.btn-primary .btn-icon {
+  filter: brightness(0) invert(1);
+}
+
+.btn-text {
+  display: flex;
+  flex-direction: column;
+  padding-left: 6px;
+  flex: 1;
+}
+
+.btn-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 2px;
+}
+
+.btn-desc {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(84, 94, 104, 0.1);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(to bottom, var(--green), #546049);
+  color: var(--on-primary);
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(96, 108, 89, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 5px 15px rgba(96, 108, 89, 0.4);
+}
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--text);
+  border: 1px solid rgba(84, 94, 104, 0.1);
+  box-shadow: 0 2px 10px rgba(84, 94, 104, 0.05);
+}
+
+/* Define unique button styles for each button */
+.btn-people {
+  background: linear-gradient(to bottom, var(--yellow), var(--brown));
+  color: var(--on-primary);
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(159, 122, 78, 0.3);
+}
+
+.btn-people .btn-icon-wrapper {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-people .btn-icon {
+  filter: brightness(0) invert(1);
+}
+
+.btn-people:hover {
+  box-shadow: 0 5px 15px rgba(159, 122, 78, 0.4);
+}
+
+.btn-email {
+  background: linear-gradient(to bottom, var(--blue), #475058);
+  color: var(--on-primary);
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(84, 94, 104, 0.3);
+}
+
+.btn-email .btn-icon-wrapper {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-email .btn-icon {
+  filter: brightness(0) invert(1);
+}
+
+.btn-email:hover {
+  box-shadow: 0 5px 15px rgba(84, 94, 104, 0.4);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column; /* Changed from row to column */
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all var(--transition);
+  border: 1px solid rgba(84, 94, 104, 0.1);
+  box-shadow: 0 2px 8px rgba(84, 94, 104, 0.05);
+}
+
+.icon-button img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  transition: transform 0.2s;
+  filter: invert(35%) sepia(12%) saturate(498%) hue-rotate(182deg) brightness(91%) contrast(87%);
+}
+
+.icon-button:hover {
+  background: var(--surface);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(84, 94, 104, 0.1);
+}
+
+.icon-button:hover img {
+  transform: scale(1.1);
+}
+
+.welcome-user {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.welcome-user p {
+  font-size: 1.1rem;
+  color: var(--text);
+  font-weight: 500;
+  margin: 0;
+}
+
+#username-display {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .container {
+    border-radius: 0;
+    padding: calc(var(--gap) * 1.5);
+    padding-top: calc(var(--gap) * 2.5);
+  }
+  
+  .logo {
+    width: 100px;
+    height: 70px;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+}

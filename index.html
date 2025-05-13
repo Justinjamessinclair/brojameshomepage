@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f9f9f9">
+  <title>Login - Brother James</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="background-blur"></div>
+  
+  <main class="container">
+    <header class="hero">
+      <h1>Welcome Back</h1>
+      <p>Login to access your dashboard</p>
+    </header>
+
+    <form id="login-form" class="form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Your name" required autocomplete="username">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="your@email.com" required autocomplete="email">
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required>
+      </div>
+      
+      <div class="form-options">
+        <label class="checkbox-label">
+          <input type="checkbox" id="remember">
+          <span>Remember me</span>
+        </label>
+        <a href="#forgot" class="text-link">Forgot password?</a>
+      </div>
+      
+      <button type="submit" class="btn btn-email login-btn">
+        <div class="btn-icon-wrapper">
+          <img src="icons/login.png" class="btn-icon" alt="Login">
+        </div>
+        <div class="btn-text">
+          <span class="btn-title">Log In</span>
+          <span class="btn-desc">Access your dashboard</span>
+        </div>
+      </button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Simple validation
+      if (!username || !email || !password) {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      // Show loading state
+      const loginBtn = document.querySelector('.login-btn');
+      loginBtn.textContent = 'Logging in...';
+      loginBtn.disabled = true;
+      
+      // For demo purposes, accept any credentials
+      setTimeout(() => {
+        // Store login state
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('username', username);
+        localStorage.setItem('userEmail', email);
+        
+        // Redirect to dashboard
+        window.location.href = 'dashboard.html';
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
